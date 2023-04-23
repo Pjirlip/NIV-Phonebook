@@ -24,8 +24,15 @@ const { title } = Astro.props;
 		--accent: 124, 58, 237;
 		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
 	}
-	html {
-		font-family: system-ui, sans-serif;
+	
+    @font-face {
+        font-family: "Diablo";
+        src: url("/DiabloLight.ttf") format("truetype");
+    }
+
+
+    html {
+		font-family: "Diablo", sans-serif;
 		background-color: #F6F6F6;
 	}
 	code {

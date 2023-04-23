@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    container_name: pocketbase
+    restart: always
+    command:
+      - --encryptionEnv 
+      - ENCRYPTION 
+    env_file: .env
+    ports:
+      - "8090:8090"
+    volumes:
+      - pbdata:/pb_data
+    networks:
+      - phonebook
+
+  phonebook:
+    image: niv-phonebook
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports: 
+      - 127.0.0.1:10002:80
+    networks:
+      - phonebook
+
+networks:
+  phonebook:
+
+
+volumes:
+  pbdata:
